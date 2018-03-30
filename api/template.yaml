@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Description: |
+  An example RESTful service
+Resources:
+  Drinks:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs6.10
+      Handler: drinks.handler
+      Events:
+        ListDrinks:
+          Type: Api
+          Properties:
+            Path: /api/drinks
+            Method: get
+        Drink:
+          Type: Api
+          Properties:
+            Path: /api/drinks/{id}
+            Method: get
