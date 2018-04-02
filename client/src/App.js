@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
+import config from './config'
 
 class App extends Component {
   constructor (props) {
@@ -13,7 +14,7 @@ class App extends Component {
   }
   fetch (endpoint) {
     return new Promise((resolve, reject) => {
-      window.fetch(endpoint)
+      window.fetch(config.apiGateway.URL + endpoint)
       .then(response => response.json())
       .then(json => resolve(json))
       .catch(error => reject(error))
