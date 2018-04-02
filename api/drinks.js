@@ -9,6 +9,10 @@ exports.handler = (event, context, callback) => {
             if(id != null) {
                 callback(null, {
                    statusCode: 200,
+                   headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": true
+                   },
                    body: JSON.stringify(drinks[id])
                 })
                 return
@@ -16,6 +20,10 @@ exports.handler = (event, context, callback) => {
             
             callback(null, { 
                statusCode: 200,
+               headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": true
+               },
                body: JSON.stringify(drinks)
             });
             break
