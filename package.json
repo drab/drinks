@@ -6,7 +6,10 @@
   "scripts": {
     "start": "concurrently \"npm run api\" \"npm run client\"",
     "api": "cd api && sam local start-api -p 3001",
-    "client": "cd client && npm start"
+    "client": "cd client && npm start",
+    "deploy:api": "cd api && sam package --template-file template.yaml --s3-bucket danrab-builds --output-template-file packaged.yaml && sam deploy --template-file ./packaged.yaml --stack-name drinks --capabilities CAPABILITY_IAM",
+    "deploy:client": "cd client && npm run deploy",
+    "deploy": "concurrently \"npm run deploy:api\" \"npm run deploy:client\""
   },
   "author": "",
   "license": "ISC",
